@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@pinata/sdk": "^1.1.10",
     "@truffle/provider": "^0.2.12",
+    "dotenv": "^8.2.0",
     "web3": "1.2.1"
   }
 }
