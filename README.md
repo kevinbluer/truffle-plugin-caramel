@@ -30,7 +30,23 @@ PINATA_API_SECRET=1234567890
 To run the plugin, simple run the following command from the root of your Truffle project:
 
 ```
-truffle run caramel
+truffle run caramel <command>
+```
+
+### Upload
+
+The following uploads your [Truffle artifacts](https://www.trufflesuite.com/docs/truffle/advanced/networks-and-app-deployment#build-artifacts).
+
+```
+truffle run caramel upload
+```
+
+### List
+
+The following retrieves a list of all your pins currently pinned on Pinata.
+
+```
+truffle run caramel list
 ```
 
 ## Contact
