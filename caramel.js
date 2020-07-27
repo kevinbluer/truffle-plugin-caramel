@@ -1,41 +1,29 @@
-const Provider = require("@truffle/provider");
-const Web3 = require("web3");
-const pinataSDK = require('@pinata/sdk');
-
 require("dotenv").config();
 
-const pinata = pinataSDK(process.env.PINATA_API_KEY, process.env.PINATA_API_SECRET);
-const gatewayUri = `https://gateway.pinata.cloud/ipfs/`;
+const list = require("./commands/list");
+const upload = require("./commands/upload");
 
-module.exports = async (config) => {
-  // config._ has the command arguments.
-  // config_[0] is the command name, e.g. "hello" here.
-  // config_[1] starts remaining parameters.
+module.exports = (config) => {
+
   if (config.help) {
-    console.log(`Usage: truffle run caramel [name]`);
+    console.log(`Usage: truffle run caramel [command]`);
+    console.log(`Commands: upload, list`);
     return;
   }
 
-  const sourcePath = config.contracts_build_directory;
-  console.log(`Pinning from ${sourcePath}`);
+  if (config._.length < 2) {
+    console.log("No command provided. Run truffle run caramel --help to see the full list.");
+    return;
+  }
 
-  try {
-    const fs = require('fs');
-    const options = {
-        pinataMetadata: {
-            name: "meta",
-            keyvalues: {
-                candyName: 'caramel'
-            }
-        },
-        pinataOptions: {
-            cidVersion: 0
-        }
-    };
-    const result = await pinata.pinFromFS(sourcePath, options);
-    console.log(`Your assets were successfully pinned:\n\n${JSON.stringify(result, null, 2)}\n`);
-    console.log(`View your assets at the follow: ${gatewayUri}${result.IpfsHash}`);
-  } catch (err) {
-      console.log(`An error occurred when attempting to pin:\n\n${JSON.stringify(err), null, 2}`);
+  switch (config._[1]) {
+    case "upload":
+      upload(config);
+      break;
+    case "list":
+      list(config);
+      break;
+    default:
+      console.log("Command not found. Run truffle run caramel --help to see the full list.");
   }
 }
