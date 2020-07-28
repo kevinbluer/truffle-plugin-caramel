@@ -1,14 +1,27 @@
+const fs = require('fs');
 const pinataSDK = require('@pinata/sdk');
 const pinata = pinataSDK(process.env.PINATA_API_KEY, process.env.PINATA_API_SECRET);
 const gatewayUri = `https://gateway.pinata.cloud/ipfs/`;
 
+
 const upload = async (config) => {
 
   try {
-    const sourcePath = config.contracts_build_directory;
+
+    let sourcePath;
+    
+    if (config._.length > 1) {
+      sourcePath = config._[2];
+      if (!fs.existsSync(sourcePath)) {
+        console.log(`No file or directory on the provided path: ${sourcePath}`);
+        return;
+      }
+    } else {
+      sourcePath = config.contracts_build_directory;
+    }
+
     console.log(`Pinning from ${sourcePath}`);
 
-    const fs = require('fs');
     const options = {
         pinataMetadata: {
             name: "meta",
