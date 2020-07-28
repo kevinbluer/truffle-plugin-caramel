@@ -1,4 +1,4 @@
-# Truffle Caramel
+# Caramel
 
 Adding caramel gooeyness (aka artifact persistence via [Pinata's](http://pinata.cloud/) IPFS pinning service) to [Truffle](https://www.trufflesuite.com/) 🍬
 
@@ -38,8 +38,12 @@ truffle run caramel <command>
 The following uploads your [Truffle artifacts](https://www.trufflesuite.com/docs/truffle/advanced/networks-and-app-deployment#build-artifacts).
 
 ```
-truffle run caramel upload
+truffle run caramel upload [<path>]
 ```
+
+Options:
+
+- **path** - Specifies the path (either to a directory or a file) that you would like to explicitly upload. If omitted, it will default to uploading your Truffle artifacts.
 
 ### List
 
