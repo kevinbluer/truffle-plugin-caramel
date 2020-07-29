@@ -3,11 +3,9 @@ const pinataSDK = require('@pinata/sdk');
 const pinata = pinataSDK(process.env.PINATA_API_KEY, process.env.PINATA_API_SECRET);
 const gatewayUri = `https://gateway.pinata.cloud/ipfs/`;
 
-
 const upload = async (config) => {
 
   try {
-
     let sourcePath;
     
     if (config._.length > 1) {

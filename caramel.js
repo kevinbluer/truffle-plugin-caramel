@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const list = require("./commands/list");
 const upload = require("./commands/upload");
+const unpin = require("./commands/unpin");
 
 module.exports = (config) => {
 
@@ -21,7 +22,10 @@ module.exports = (config) => {
       upload(config);
       break;
     case "list":
-      list(config);
+      list();
+      break;
+    case "unpin":
+      unpin(config);
       break;
     default:
       console.log("Command not found. Run truffle run caramel --help to see the full list.");

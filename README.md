@@ -33,7 +33,14 @@ To run the plugin, simple run the following command from the root of your Truffl
 truffle run caramel <command>
 ```
 
-### Upload
+The list available commands is currently as follows:
+
+- [upload](#upload)
+- [list](#list)
+- [unpin](#unpin)
+
+<a name="upload"></a>
+### `Upload`
 
 The following uploads your [Truffle artifacts](https://www.trufflesuite.com/docs/truffle/advanced/networks-and-app-deployment#build-artifacts).
 
@@ -45,7 +52,8 @@ Options:
 
 - **path** - Specifies the path (either to a directory or a file) that you would like to explicitly upload. If omitted, it will default to uploading your Truffle artifacts.
 
-### List
+<a name="list"></a>
+### `List`
 
 The following retrieves a list of all your pins currently pinned on Pinata.
 
@@ -53,6 +61,11 @@ The following retrieves a list of all your pins currently pinned on Pinata.
 truffle run caramel list
 ```
 
-## Contact
+<a name="unpin"></a>
+### `Unpin`
 
-Any queries with the plugin, don't hesitate to reach out at kevin@trufflesuite.com.
+The following unpins an ipfs hash currently pinned by Pinata.
+
+```
+truffle run caramel unpin <ipfs-hash>
+```

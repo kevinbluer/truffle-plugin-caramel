@@ -2,7 +2,7 @@ const pinataSDK = require('@pinata/sdk');
 const pinata = pinataSDK(process.env.PINATA_API_KEY, process.env.PINATA_API_SECRET);
 const gatewayUri = `https://gateway.pinata.cloud/ipfs/`;
 
-const list = async (config) => {
+const list = async () => {
 
   try {
     console.log(`Loading your pinned data...`);
